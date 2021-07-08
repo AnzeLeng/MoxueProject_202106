@@ -1,0 +1,26 @@
+/* 
+ * // 直接排序不用二分？
+ * class Solution {
+ *     public int findMin(int[] nums) {
+ *         Arrays.sort(nums);
+ *         return nums[0];
+ *     }
+ *  }
+ */
+
+//参考官方答案 二分法
+class Solution {
+    public int findMin(int[] nums) {
+        int left = 0;
+        int right = nums.length - 1;
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] > nums[right]) {          
+                left = mid + 1;
+            } else {                                
+                right = mid;
+            }
+        }
+        return nums[left];
+    }
+}
