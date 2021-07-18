@@ -1,0 +1,16 @@
+class Solution {
+    public int[] reversePrint(ListNode Head) {
+        LinkedList<Integer> stack = new LinkedList<Integer>();
+        
+        while(Head != null) 
+        {
+            stack.addLast(Head.val);
+            Head = Head.next;
+        }
+
+        int[] reverse = new int[stack.size()];
+        for(int i = 0; i < reverse.length; i++)
+            reverse[i] = stack.removeLast();
+    return reverse;
+    }
+}

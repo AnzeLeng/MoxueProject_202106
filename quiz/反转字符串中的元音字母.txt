@@ -1,0 +1,50 @@
+class Solution {
+    public  String reverseVowels(String w) {
+        if (w.length() == 0) 
+        {
+            return "";
+        }
+
+        int a = 0;
+        int b = w.length() - 1;
+
+        char[] vowels = w.toCharArray();
+
+        while (a <= b) 
+        {
+            while (!check(vowels[a]) && a < b) 
+            {
+                a++;
+            }
+            while (!check(vowels[b]) && a < b) 
+            {
+                b--;
+            }
+
+            if (a >= b)
+                break;
+
+            char finish = vowels[a];
+            vowels[a] = vowels[b];
+            vowels[b] = finish;
+
+            a++;
+            b--;
+        }
+
+        StringBuilder reverse = new StringBuilder();
+        for (int i = 0; i < vowels.length; i++) 
+        {
+            reverse.append(vowels[i]);
+        }
+
+        return reverse.toString();
+    }
+
+    private  boolean check(char character) 
+    {
+        if (character == 'a' || character == 'e' || character == 'i' || character == 'o' || character == 'u')
+        return true;
+    return false;
+    }
+}
